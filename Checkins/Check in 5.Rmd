@@ -1,0 +1,21 @@
+---
+title: "Check-in 5"
+author: "Maxim Dokukin"
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    code-summary: "Code"
+---
+
+Remember, **follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope.** You may find a template file by clicking "Code" in the top right corner of this page.
+
+1. (Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5.
+```{r}
+sum = 0
+for (i in 1:999)
+  if (i %% 3 == 0 | i %% 5 == 0)
+    sum = sum + i
+
+print(sum)
+```

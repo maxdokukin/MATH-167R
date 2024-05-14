@@ -1,0 +1,26 @@
+---
+title: "Check-in 1: R Markdown"
+author: "Maxim Dokukin"
+date: "2024-01-29"
+output: html_document
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    code-summary: "Code"
+---
+
+1.  This is a code chunk that opens the `mtcars` dataset, which contains information about on 32 cars from a 1974 issue of the magazine *Motor Trend* and creates a scatter plot with horsepower `hp` on the x-axis and miles-per-gallon `mpg` on the y-axis. Try running this code and Rendering/Knitting your Rmd document. If you have done this correctly, RStudio should produce an html document.
+
+```{r, eval = T, echo = T}
+data(mtcars)
+plot(mtcars$hp, mtcars$mpg)
+```
+
+2.  Using this scatter plot, describe the relationship between `mpg` and `hp`.
+Higher hp correlates to lower mpg.
+
+3.  Create your own code chunk below this question containing the line of code `print("Hello MATH167R!")`. Then Render/Knit your Rmd document. If you have done this correctly, RStudio should produce an html document.
+```{r}
+print("Hello MATH167R!")
+```
