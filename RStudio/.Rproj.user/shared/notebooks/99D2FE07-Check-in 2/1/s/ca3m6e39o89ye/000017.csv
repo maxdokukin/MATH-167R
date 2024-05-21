@@ -1,0 +1,1 @@
+"0","mean_dep_delays_by_origin <- flights |> group_by(origin) |> summarize(mean_dep_delay = mean(dep_delay, na.rm = T)) |> ungroup()"
