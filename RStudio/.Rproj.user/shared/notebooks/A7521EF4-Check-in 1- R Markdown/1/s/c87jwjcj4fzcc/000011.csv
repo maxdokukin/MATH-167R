@@ -1,2 +1,0 @@
-"0","data(mtcars)"
-"0","plot(mtcars$hp, mtcars$mpg)"

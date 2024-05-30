@@ -1,2 +1,0 @@
-"0","weather_forecasts <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-20/weather_forecasts.csv')"
-"0","head(weather_forecasts)"
