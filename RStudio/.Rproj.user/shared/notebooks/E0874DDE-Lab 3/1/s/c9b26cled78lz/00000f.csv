@@ -1,0 +1,7 @@
+"0","san_jose_data$absolute_error <- abs(san_jose_data$observed_temp - san_jose_data$forecast_temp)"
+"0","mean_error <- mean(san_jose_data$absolute_error, na.rm = TRUE)"
+"0","print(mean_error)"
+"1","[1]"
+"1"," 2.169762"
+"1","
+"

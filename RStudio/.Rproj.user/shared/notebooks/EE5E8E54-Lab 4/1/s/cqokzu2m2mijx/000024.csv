@@ -1,0 +1,4 @@
+"0","companies <- c('Apple', 'IBM', 'Netflix')"
+"0","prices_2014 <- AAPL_IBM_NFLX_2010_2023[AAPL_IBM_NFLX_2010_2023$date == as.Date('2014-01-10'), ]"
+"2","Error: object 'AAPL_IBM_NFLX_2010_2023' not found
+"

@@ -1,0 +1,83 @@
+---
+title: "Check-in 8"
+author: "Maxim Dokukin"
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    code-summary: "Code"
+---
+
+Remember, **follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope.** You may find a template file by clicking "Code" in the top right corner of this page.
+
+1. Download and read the documentation for the [Childcare Costs data](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-09/readme.md).
+```{r, warning=FALSE, message=FALSE}
+#install.packages("tidytuesdayR")
+library(tidytuesdayR)
+tuesdata <- tidytuesdayR::tt_load('2023-05-09')
+tuesdata <- tidytuesdayR::tt_load(2023, week = 19)
+
+childcare_costs <- tuesdata$childcare_costs
+
+library(dplyr)
+```
+
+2. Use visualization and regression to explore the following question: Is there a relationship between a county's average childcare costs and its median household income? There will be more than one way to answer this question--the important thing is to **explain** the choices you make in your analysis.
+
+```{r}
+median_costs <- childcare_costs |>
+  group_by(county_fips_code) |>
+  summarise(
+    median_income = median(me_2018, na.rm = TRUE),
+    median_mcsa = median(mcsa, na.rm = TRUE),
+    median_mfccsa = median(mfccsa, na.rm = TRUE),
+    median_mc_infant = median(mc_infant, na.rm = TRUE),
+    median_mc_toddler = median(mc_toddler, na.rm = TRUE),
+    median_mc_preschool = median(mc_preschool, na.rm = TRUE),
+    median_mfcc_infant = median(mfcc_infant, na.rm = TRUE),
+    median_mfcc_toddler = median(mfcc_toddler, na.rm = TRUE),
+    median_mfcc_preschool = median(mfcc_preschool, na.rm = TRUE)
+  )
+```
+
+
+
+```{r}
+lm_res = lm(median_income ~ median_mcsa, data = median_costs)
+
+plot(median_income ~ median_mcsa, data = median_costs,
+     xlab = "median_mcsa",
+     ylab = "median_income",
+     pch  = 16, 
+     col = "blue",
+     main = "Relationship Between Median Income and Median Childcare Cost")
+
+abline(lm_res,  col = "red")
+```
+
+
+
+```{r}
+lm_res = lm(median_income ~ median_mcsa + median_mfccsa + median_mc_infant + 
+              median_mc_toddler + median_mc_preschool + median_mfcc_infant + 
+              median_mfcc_toddler + median_mfcc_preschool, data = median_costs)
+
+summary(lm_res)
+```
+
+-------------------------------------------
+
+I decided to use median_income ~ median_mcsa correlation as the common one.
+
+mcsa is weekly, full-time median price charged for Center-Based Care for those
+who are school age based on the results reported in the market rate survey
+report for the county or the rate zone/cluster to which the county is assigned.
+
+Hence, this correlation should be the most representative.
+
+However, I also investigated correlation of the income with other parameters,
+but did not plot it. There was significant correlation of imcome with
+median_mfccsa, median_mc_preschool, median_mfcc_infant, median_mfcc_toddler.
+
+While no significant correlation exist between income and median_mc_infant,
+median_mc_toddler, median_mfcc_preschool.

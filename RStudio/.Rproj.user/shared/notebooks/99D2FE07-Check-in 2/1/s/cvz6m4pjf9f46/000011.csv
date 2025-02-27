@@ -1,0 +1,2 @@
+"0","mean_dep_delays_by_months <- flights |> group_by(month) |> summarize(mean_dep_delay = mean(dep_delay, na.rm = T)) |> ungroup()"
+"0","print(mean_dep_delays_by_months, n=12)"
